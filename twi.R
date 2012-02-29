@@ -22,7 +22,7 @@ following = tmp$getFriends(n = NULL)
 followingLocation = sapply(following,function(x){location(x)})
 followingLocation <- as.data.frame(do.call(rbind, followingLocation))
 
-
+#convert location to geocodes
 
 gcodesfollowers <- geocode(followersLocation$V1)
 gcodesfollowers <- gcodesfollowers[!is.na(gcodesfollowers$lon), ]
@@ -38,7 +38,7 @@ unigcodesfollowing <- unigcodesfollowing[, c("lon", "lat")]
 nFollowers <- length(unigcodesfollowers$lat)
 nFollowing <- length(unigcodesfollowing$lat)
 
-#created graphs
+#created graphs for followers and following
 par(mfrow=c(2,1),mar=rep(0,4))
 
 map("world", col="#191919", fill=TRUE, bg="#000000", mar=rep(0,4))
